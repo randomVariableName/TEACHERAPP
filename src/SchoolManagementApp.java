@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.*;
 
 public class SchoolManagementApp implements java.io.Serializable{
-    public ArrayList<attendancePanel> attendancePanels;
+    public static ArrayList<attendancePanel> attendancePanels;
     public static Calendar calendar = new GregorianCalendar(2023, Calendar.DECEMBER, 7);
     public static ArrayList<gradesPanel> gradesPanels;
     public ArrayList<activitiesPanel> activitiesPanels;
@@ -133,7 +133,6 @@ public class SchoolManagementApp implements java.io.Serializable{
         frame.setVisible(true);
         loginFrame.setVisible(false);
         frame.addWindowListener(new WindowAdapter() {
-            
         });
         logout.addActionListener(e -> {
             frame.setVisible(false);
@@ -178,7 +177,6 @@ public class SchoolManagementApp implements java.io.Serializable{
             }
         };
         frame.addWindowListener(listener);
-
     }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(SchoolManagementApp::new);

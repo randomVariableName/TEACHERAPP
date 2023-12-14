@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -45,6 +46,7 @@ public class analysisPanel extends JPanel {
     }
 
     private void getGrades() {
+        ArrayList<Integer> att = getAttendance();
         for (int i = 0; i<SchoolManagementApp.data[grade].length; i++){
             int avgrade = 0;
             int numgrades = 0;
@@ -60,28 +62,31 @@ public class analysisPanel extends JPanel {
             } else {
                 total = Math.round(avgrade / numgrades);
             }
-            analysisTableModel.addRow(new Object[] {SchoolManagementApp.data[grade][i][0], SchoolManagementApp.data[grade][i][1], total});
+            analysisTableModel.addRow(new Object[] {SchoolManagementApp.data[grade][i][0], SchoolManagementApp.data[grade][i][1], total, att.get(i)});
         }
     }
 
-    private void getAttendance() {
+    private ArrayList<Integer> getAttendance() {
+        SchoolManagementApp.attendancePanels.get(grade).getThis();
+        ArrayList<Integer> totals = new ArrayList<>();
         Calendar calendar = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         for (int i = 0; i<SchoolManagementApp.data[grade].length; i++){
             int numthere = 0;
-            long numtotal = getDifferenceDays(SchoolManagementApp.calendar.getTime(), calendar.getTime());
-            for (int j=0; j<(gradesRecords.get(grade)).size(); j++) {
-                if ((Integer) SchoolManagementApp.data[grade][i][0] == Integer.parseInt((String) gradesRecords.get(grade).get(j)[0])) {
-                    numthere = 0;
+            long numtotal = getDifferenceDays(SchoolManagementApp.calendar.getTime(), calendar.getTime())+1;
+            for (String key : attendanceRecords.get(grade).keySet()) {
+                if (attendanceRecords.get(grade).get(key)[i] != null && attendanceRecords.get(grade).get(key)[i] != false) {
+                    numthere += 1;
                 }
             }
             int total;
             if (numtotal == 0) {
                 total = 0;
             } else {
-                total = Math.round(100*(numthere/numtotal));
+                total = Math.round(100*((float) numthere /numtotal));
             }
-            analysisTableModel.addRow(new Object[] {SchoolManagementApp.data[grade][i][0], SchoolManagementApp.data[grade][i][1], total});
+            totals.add(total);
         }
+        return totals;
     }
     public static long getDifferenceDays(Date d1, Date d2) {
         long diff = d2.getTime() - d1.getTime();

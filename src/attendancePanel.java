@@ -85,4 +85,7 @@ public class attendancePanel extends JPanel{
     public HashMap<String, Boolean[]> getAttendanceRecords() {
         return attendanceRecords;
     }
+    public void getThis() {
+        saveCurrentAttendance(getSelectedDate());
+    }
 }
