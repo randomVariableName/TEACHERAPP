@@ -40,6 +40,73 @@ public class gradesPanel extends JPanel{
         JTextField studentNameField = new JTextField();
         JTextField testField = new JTextField();
         JTextField gradeField = new JTextField();
+        studentIdField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10) {
+                    studentIdField.transferFocus();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        studentNameField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10) {
+                    studentNameField.transferFocus();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        testField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10) {
+                    testField.transferFocus();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        gradeField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10) {
+                    String studentId = studentIdField.getText();
+                    String studentName = studentNameField.getText();
+                    String test = testField.getText();
+                    String grade = gradeField.getText();
+                    if (isValidStudent(studentId, studentName) && !test.isEmpty() && !grade.isEmpty()) {
+                        gradesTableModel.addRow(new Object[]{studentId, studentName, test, grade});
+                        gradesRecords.add(new Object[]{studentId, studentName, test, grade});
+                        studentIdField.setText("");
+                        studentNameField.setText("");
+                        testField.setText("");
+                        gradeField.setText("");
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
         JButton addGradeButton = new JButton("Add Grade");
         for (int i = 0; i<gradesRecords.size(); i++) {
             gradesTableModel.addRow(gradesRecords.get(i));

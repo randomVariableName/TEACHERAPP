@@ -1,8 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 
@@ -90,6 +88,47 @@ public class SchoolManagementApp implements java.io.Serializable{
         loginPanel.add(passwordField);
         loginPanel.add(new JLabel());
         loginPanel.add(loginButton);
+        usernameField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10) {
+                    usernameField.transferFocus();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        passwordField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10) {
+                    String username = usernameField.getText();
+                    String password = new String(passwordField.getPassword());
+                    if (username.equals("thompson") && password.equals("password")) {
+                        loginFrame.dispose();
+                        if (first) {
+                            initializeMainAppUI();
+                            first = false;
+                        } else {
+                            frame.setVisible(true);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(loginFrame, "Invalid username or password.", "Incorrect Login", JOptionPane.ERROR_MESSAGE);
+                        passwordField.setText("");
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
     }
     private JButton getjButton(JTextField usernameField, JPasswordField passwordField) {
         JButton loginButton = new JButton("Login");

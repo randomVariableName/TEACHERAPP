@@ -39,6 +39,57 @@ public class activitiesPanel extends JPanel {
         JTextField studentIdField = new JTextField();
         JTextField studentNameField = new JTextField();
         JTextField noteField = new JTextField();
+        studentIdField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10) {
+                    studentIdField.transferFocus();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        studentNameField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10) {
+                    studentNameField.transferFocus();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        noteField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10) {
+                    String studentId = studentIdField.getText();
+                    String studentName = studentNameField.getText();
+                    String note = noteField.getText();
+                    if (isValidStudent(studentId, studentName) && !note.isEmpty()) {
+                        activitiesTableModel.addRow(new Object[]{studentId, studentName, note});
+                        activitiesRecords.add(new Object[]{studentId, studentName, note});
+                        studentIdField.setText("");
+                        studentNameField.setText("");
+                        noteField.setText("");
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
         JButton addNoteButton = new JButton("Add Note");
         for (int i = 0; i<activitiesRecords.size(); i++) {
             activitiesTableModel.addRow(activitiesRecords.get(i));
