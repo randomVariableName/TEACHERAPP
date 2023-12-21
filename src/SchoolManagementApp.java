@@ -8,16 +8,16 @@ public class SchoolManagementApp implements java.io.Serializable{
     public static ArrayList<attendancePanel> attendancePanels;
     public static Calendar calendar = new GregorianCalendar(2023, Calendar.DECEMBER, 7);
     public static ArrayList<gradesPanel> gradesPanels;
-    public ArrayList<activitiesPanel> activitiesPanels;
-    public ArrayList<analysisPanel> analysisPanels;
+    private final ArrayList<activitiesPanel> activitiesPanels;
+    private final ArrayList<analysisPanel> analysisPanels;
     private JFrame loginFrame;
     private JFrame frame;
     private JPanel loginPanel;
-    public Object[] datakey;
+    private Object[] datakey;
     private boolean first = true;
-    public ArrayList<ArrayList<Object[]>> gradesRecords = new ArrayList<>();
-    public ArrayList<ArrayList<Object[]>> activitiesRecords = new ArrayList<>();
-    public ArrayList<HashMap<String, Boolean[]>> attendanceRecords = new ArrayList<>(4);
+    private ArrayList<ArrayList<Object[]>> gradesRecords = new ArrayList<>();
+    private ArrayList<ArrayList<Object[]>> activitiesRecords = new ArrayList<>();
+    private ArrayList<HashMap<String, Boolean[]>> attendanceRecords = new ArrayList<>(4);
     public static Object[][][] data;
     public SchoolManagementApp() {
         try {

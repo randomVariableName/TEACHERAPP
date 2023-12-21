@@ -1,21 +1,18 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class analysisPanel extends JPanel {
-    private int grade;
+    private final int grade;
     private DefaultTableModel analysisTableModel;
-    public ArrayList<Object[]> analysisRecords;
-    private ArrayList<ArrayList<Object[]>> gradesRecords;
-    private ArrayList<HashMap<String, Boolean[]>> attendanceRecords;
+    private final ArrayList<ArrayList<Object[]>> gradesRecords;
+    private final ArrayList<HashMap<String, Boolean[]>> attendanceRecords;
     analysisPanel(int num, ArrayList<ArrayList<Object[]>> g, ArrayList<HashMap<String, Boolean[]>> a) {
         gradesRecords = g;
         attendanceRecords = a;
         grade = num;
-        analysisRecords = new ArrayList<>();
         initializeAnalysisPanel();
     }
     private void initializeAnalysisPanel () {
@@ -60,7 +57,7 @@ public class analysisPanel extends JPanel {
             if (numgrades == 0) {
                 total = 0;
             } else {
-                total = Math.round(avgrade / numgrades);
+                total = Math.round((float) avgrade / numgrades);
             }
             analysisTableModel.addRow(new Object[] {SchoolManagementApp.data[grade][i][0], SchoolManagementApp.data[grade][i][1], total, att.get(i)});
         }

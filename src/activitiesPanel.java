@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class activitiesPanel extends JPanel {
-    private int grade;
+    private final int grade;
     private DefaultTableModel activitiesTableModel;
     public ArrayList<Object[]> activitiesRecords;
     activitiesPanel(int num, ArrayList<Object[]> thing) {

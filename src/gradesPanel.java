@@ -6,8 +6,8 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class gradesPanel extends JPanel{
-    private int grades;
-    public DefaultTableModel gradesTableModel;
+    private final int grades;
+    private DefaultTableModel gradesTableModel;
     public ArrayList<Object[]> gradesRecords;
     gradesPanel(int num, ArrayList<Object[]> thing) {
         grades = num;

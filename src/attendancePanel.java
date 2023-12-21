@@ -5,9 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class attendancePanel extends JPanel{
-    private int grade;
+    private final int grade;
     private DefaultTableModel attendanceTableModel;
-    public JSpinner dateSpinner;
+    private JSpinner dateSpinner;
     public HashMap<String, Boolean[]> attendanceRecords;
     attendancePanel(int num, HashMap<String, Boolean[]> attend) {
         attendanceRecords = attend;
