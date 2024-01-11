@@ -91,8 +91,8 @@ public class activitiesPanel extends JPanel {
             }
         });
         JButton addNoteButton = new JButton("Add Note");
-        for (int i = 0; i<activitiesRecords.size(); i++) {
-            activitiesTableModel.addRow(activitiesRecords.get(i));
+        for (Object[] activitiesRecord : activitiesRecords) {
+            activitiesTableModel.addRow(activitiesRecord);
         }
         addNoteButton.addActionListener((e -> {
             String studentId = studentIdField.getText();

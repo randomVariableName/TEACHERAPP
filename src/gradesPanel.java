@@ -108,8 +108,8 @@ public class gradesPanel extends JPanel{
             }
         });
         JButton addGradeButton = new JButton("Add Grade");
-        for (int i = 0; i<gradesRecords.size(); i++) {
-            gradesTableModel.addRow(gradesRecords.get(i));
+        for (Object[] gradesRecord : gradesRecords) {
+            gradesTableModel.addRow(gradesRecord);
         }
         addGradeButton.addActionListener((e -> {
             String studentId = studentIdField.getText();

@@ -71,7 +71,7 @@ public class analysisPanel extends JPanel {
             int numthere = 0;
             long numtotal = getDifferenceDays(SchoolManagementApp.calendar.getTime(), calendar.getTime())+1;
             for (String key : attendanceRecords.get(grade).keySet()) {
-                if (attendanceRecords.get(grade).get(key)[i] != null && attendanceRecords.get(grade).get(key)[i] != false) {
+                if (attendanceRecords.get(grade).get(key)[i] != null && attendanceRecords.get(grade).get(key)[i]) {
                     numthere += 1;
                 }
             }
