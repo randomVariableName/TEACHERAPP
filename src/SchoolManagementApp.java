@@ -21,27 +21,27 @@ public class SchoolManagementApp implements java.io.Serializable{
     public static Object[][][] data;
     public SchoolManagementApp() {
         try {
-            FileInputStream fii = new FileInputStream("datakey.txt");
+            FileInputStream fii = new FileInputStream("files/datakey.txt");
             ObjectInputStream oii = new ObjectInputStream(fii);
             datakey = (Object[]) oii.readObject();
             oii.close();
             fii.close();
-            FileInputStream fi = new FileInputStream("data.txt");
+            FileInputStream fi = new FileInputStream("files/data.txt");
             ObjectInputStream oi = new ObjectInputStream(fi);
             data = (Object[][][]) oi.readObject();
             oi.close();
             fi.close();
-            FileInputStream f = new FileInputStream("attendance.txt");
+            FileInputStream f = new FileInputStream("files/attendance.txt");
             ObjectInputStream o = new ObjectInputStream(f);
             attendanceRecords = (ArrayList<HashMap<String, Boolean[]>>) o.readObject();
             o.close();
             f.close();
-            FileInputStream a = new FileInputStream("grades.txt");
+            FileInputStream a = new FileInputStream("files/grades.txt");
             ObjectInputStream b = new ObjectInputStream(a);
             gradesRecords = (ArrayList<ArrayList<Object[]>>) b.readObject();
             b.close();
             a.close();
-            FileInputStream aa = new FileInputStream("activities.txt");
+            FileInputStream aa = new FileInputStream("files/activities.txt");
             ObjectInputStream bb = new ObjectInputStream(aa);
             activitiesRecords = (ArrayList<ArrayList<Object[]>>) bb.readObject();
             bb.close();
@@ -193,17 +193,17 @@ public class SchoolManagementApp implements java.io.Serializable{
                     activitiesRecords.add(activitiesPanels.get(i).activitiesRecords);
                 }
                 try {
-                    FileOutputStream fii = new FileOutputStream("attendance.txt");
+                    FileOutputStream fii = new FileOutputStream("files/attendance.txt");
                     ObjectOutputStream oii = new ObjectOutputStream(fii);
                     oii.writeObject(attendanceRecords);
                     oii.close();
                     fii.close();
-                    FileOutputStream f = new FileOutputStream("grades.txt");
+                    FileOutputStream f = new FileOutputStream("files/grades.txt");
                     ObjectOutputStream o = new ObjectOutputStream(f);
                     o.writeObject(gradesRecords);
                     o.close();
                     f.close();
-                    FileOutputStream fi = new FileOutputStream("activities.txt");
+                    FileOutputStream fi = new FileOutputStream("files/activities.txt");
                     ObjectOutputStream oi = new ObjectOutputStream(fi);
                     oi.writeObject(activitiesRecords);
                     oi.close();
