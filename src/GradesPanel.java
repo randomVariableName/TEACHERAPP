@@ -5,11 +5,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-public class gradesPanel extends JPanel{
+public class GradesPanel extends JPanel{
     private final int grades;
     private DefaultTableModel gradesTableModel;
     public ArrayList<Object[]> gradesRecords;
-    gradesPanel(int num, ArrayList<Object[]> thing) {
+    GradesPanel(int num, ArrayList<Object[]> thing) {
         grades = num;
         gradesRecords = thing;
         initializeGradesPanel();

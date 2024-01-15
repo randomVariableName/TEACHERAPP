@@ -4,12 +4,12 @@ import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class attendancePanel extends JPanel{
+public class AttendancePanel extends JPanel{
     private final int grade;
     private DefaultTableModel attendanceTableModel;
     private JSpinner dateSpinner;
     public HashMap<String, Boolean[]> attendanceRecords;
-    attendancePanel(int num, HashMap<String, Boolean[]> attend) {
+    AttendancePanel(int num, HashMap<String, Boolean[]> attend) {
         attendanceRecords = attend;
         grade = num;
         initializeAttendancePanel();

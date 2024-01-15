@@ -5,11 +5,11 @@ import java.io.*;
 import java.util.*;
 
 public class SchoolManagementApp implements java.io.Serializable{
-    public static ArrayList<attendancePanel> attendancePanels;
+    public static ArrayList<AttendancePanel> attendancePanels;
     public static Calendar calendar = new GregorianCalendar(2023, Calendar.DECEMBER, 7);
-    public static ArrayList<gradesPanel> gradesPanels;
-    private final ArrayList<activitiesPanel> activitiesPanels;
-    private final ArrayList<analysisPanel> analysisPanels;
+    public static ArrayList<GradesPanel> gradesPanels;
+    private final ArrayList<ActivitiesPanel> activitiesPanels;
+    private final ArrayList<AnalysisPanel> analysisPanels;
     private JFrame loginFrame;
     private JFrame frame;
     private JPanel loginPanel;
@@ -56,10 +56,10 @@ public class SchoolManagementApp implements java.io.Serializable{
         activitiesPanels = new ArrayList<>();
         analysisPanels = new ArrayList<>();
         for (int i = 0; i < data.length; i++) {
-            attendancePanels.add(new attendancePanel(i, attendanceRecords.get(i)));
-            gradesPanels.add(new gradesPanel(i, gradesRecords.get(i)));
-            activitiesPanels.add(new activitiesPanel(i, activitiesRecords.get(i)));
-            analysisPanels.add(new analysisPanel(i, gradesRecords, attendanceRecords));
+            attendancePanels.add(new AttendancePanel(i, attendanceRecords.get(i)));
+            gradesPanels.add(new GradesPanel(i, gradesRecords.get(i)));
+            activitiesPanels.add(new ActivitiesPanel(i, activitiesRecords.get(i)));
+            analysisPanels.add(new AnalysisPanel(i, gradesRecords, attendanceRecords));
         }
         initializeLoginUI();
     }

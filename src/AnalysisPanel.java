@@ -4,12 +4,12 @@ import java.awt.*;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class analysisPanel extends JPanel {
+public class AnalysisPanel extends JPanel {
     private final int grade;
     private DefaultTableModel analysisTableModel;
     private final ArrayList<ArrayList<Object[]>> gradesRecords;
     private final ArrayList<HashMap<String, Boolean[]>> attendanceRecords;
-    analysisPanel(int num, ArrayList<ArrayList<Object[]>> g, ArrayList<HashMap<String, Boolean[]>> a) {
+    AnalysisPanel(int num, ArrayList<ArrayList<Object[]>> g, ArrayList<HashMap<String, Boolean[]>> a) {
         gradesRecords = g;
         attendanceRecords = a;
         grade = num;
